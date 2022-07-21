@@ -1,11 +1,9 @@
 import 'package:amazon_clone_tutorial/constants/global_variables.dart';
-//import 'package:amazon_clone_tutorial/features/account/screens/account_screen.dart';
-//import 'package:amazon_clone_tutorial/features/cart/screens/cart_screen.dart';
 import 'package:amazon_clone_tutorial/features/home/screens/home_screen.dart';
-import 'package:amazon_clone_tutorial/providers/user_provider.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
+import '../../features/account/screens/account_screen.dart';
 
 class BottomBar extends StatefulWidget {
   static const String routeName = '/actual-home';
@@ -22,8 +20,10 @@ class _BottomBarState extends State<BottomBar> {
 
   List<Widget> pages = [
     const HomeScreen(),
-    //  const AccountScreen(),
-    // const CartScreen(),
+    const AccountScreen(),
+    const Center(
+      child: Text('Cart Page'),
+    ),
   ];
 
   void updatePage(int page) {
@@ -34,8 +34,6 @@ class _BottomBarState extends State<BottomBar> {
 
   @override
   Widget build(BuildContext context) {
-    //  final userCartLen = context.watch<UserProvider>().user.cart.length;
-
     return Scaffold(
       body: pages[_page],
       bottomNavigationBar: BottomNavigationBar(
@@ -46,7 +44,7 @@ class _BottomBarState extends State<BottomBar> {
         iconSize: 28,
         onTap: updatePage,
         items: [
-          // HOME
+          //home
           BottomNavigationBarItem(
             icon: Container(
               width: bottomBarWidth,
@@ -66,7 +64,7 @@ class _BottomBarState extends State<BottomBar> {
             ),
             label: '',
           ),
-          // ACCOUNT
+          //account
           BottomNavigationBarItem(
             icon: Container(
               width: bottomBarWidth,
@@ -80,13 +78,11 @@ class _BottomBarState extends State<BottomBar> {
                   ),
                 ),
               ),
-              child: const Icon(
-                Icons.person_outline_outlined,
-              ),
+              child: const Icon(Icons.person_outline_outlined),
             ),
             label: '',
           ),
-          // CART
+          //cart
           BottomNavigationBarItem(
             icon: Container(
               width: bottomBarWidth,
@@ -100,14 +96,14 @@ class _BottomBarState extends State<BottomBar> {
                   ),
                 ),
               ),
-              // child: Badge(
-              //   elevation: 0,
-              //   badgeContent: Text(userCartLen.toString()),
-              //   badgeColor: Colors.white,
-              //   child: const Icon(
-              //     Icons.shopping_cart_outlined,
-              //   ),
-              // ),
+              child: Badge(
+                elevation: 0,
+                badgeContent: const Text('2'),
+                badgeColor: Colors.white,
+                child: const Icon(
+                  Icons.shopping_cart_outlined,
+                ),
+              ),
             ),
             label: '',
           ),
