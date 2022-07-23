@@ -1,6 +1,7 @@
 //import fr pack
 const express = require("express");
 const mongoose = require('mongoose');
+const adminRouter = require("./routes/admin");
 
 //import fr other
 const authRouter = require('./routes/auth');
@@ -13,6 +14,7 @@ const DB = "mongodb+srv://roman:zccclDQ8DvtJx0LU@cluster0.e75jo.mongodb.net/?ret
 //middleware
 app.use(express.json());
 app.use(authRouter);
+app.use(adminRouter);
 
 //connection
 mongoose.connect(DB).then(() => {
