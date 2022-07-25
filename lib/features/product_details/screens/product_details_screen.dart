@@ -1,5 +1,6 @@
 import 'package:amazon_clone_tutorial/common/widgets/custom_button.dart';
 import 'package:amazon_clone_tutorial/common/widgets/stars.dart';
+import 'package:amazon_clone_tutorial/features/product_details/services/product_details_services.dart';
 //import 'package:amazon_clone_tutorial/features/product_details/services/product_details_services.dart';
 import 'package:amazon_clone_tutorial/providers/user_provider.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -24,10 +25,10 @@ class ProductDetailScreen extends StatefulWidget {
 }
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
-  // final ProductDetailsServices productDetailsServices =
-  //     ProductDetailsServices();
-  double avgRating = 0;
-  double myRating = 0;
+  final ProductDetailsServices productDetailsServices =
+      ProductDetailsServices();
+  // double avgRating = 0;
+  // double myRating = 0;
 
   // @override
   // void initState() {
@@ -144,8 +145,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   Text(
                     widget.product.id!,
                   ),
-                  Stars(
-                    rating: avgRating,
+                  const Stars(
+                    rating: 4,
                   ),
                 ],
               ),
@@ -247,7 +248,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               ),
             ),
             RatingBar.builder(
-              initialRating: myRating,
+              initialRating: 0,
               minRating: 1,
               direction: Axis.horizontal,
               allowHalfRating: true,
@@ -258,11 +259,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 color: GlobalVariables.secondaryColor,
               ),
               onRatingUpdate: (rating) {
-                // productDetailsServices.rateProduct(
-                //   context: context,
-                //   product: widget.product,
-                //   rating: rating,
-                // );
+                productDetailsServices.rateProduct(
+                  context: context,
+                  product: widget.product,
+                  rating: rating,
+                );
               },
             )
           ],
