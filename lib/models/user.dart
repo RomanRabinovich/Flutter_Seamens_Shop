@@ -8,7 +8,7 @@ class User {
   final String address;
   final String type;
   final String token;
-  // final List<dynamic> cart;
+  final List<dynamic> cart;
 
   User({
     required this.id,
@@ -18,7 +18,7 @@ class User {
     required this.address,
     required this.type,
     required this.token,
-    //  required this.cart,
+    required this.cart,
   });
 
   Map<String, dynamic> toMap() {
@@ -30,7 +30,7 @@ class User {
       'address': address,
       'type': type,
       'token': token,
-      //  'cart': cart,
+      'cart': cart,
     };
   }
 
@@ -43,11 +43,11 @@ class User {
       address: map['address'] ?? '',
       type: map['type'] ?? '',
       token: map['token'] ?? '',
-      // cart: List<Map<String, dynamic>>.from(
-      //   map['cart']?.map(
-      //     (x) => Map<String, dynamic>.from(x),
-      //   ),
-      // ),
+      cart: List<Map<String, dynamic>>.from(
+        map['cart']?.map(
+          (x) => Map<String, dynamic>.from(x),
+        ),
+      ),
     );
   }
 
@@ -55,25 +55,25 @@ class User {
 
   factory User.fromJson(String source) => User.fromMap(json.decode(source));
 
-  // User copyWith({
-  //   String? id,
-  //   String? name,
-  //   String? email,
-  //   String? password,
-  //   String? address,
-  //   String? type,
-  //   String? token,
-  //   // List<dynamic>? cart,
-  // }) {
-  //   return User(
-  //     id: id ?? this.id,
-  //     name: name ?? this.name,
-  //     email: email ?? this.email,
-  //     password: password ?? this.password,
-  //     address: address ?? this.address,
-  //     type: type ?? this.type,
-  //     token: token ?? this.token,
-  //     //  cart: cart ?? this.cart,
-  //   );
-  // }
+  User copyWith({
+    String? id,
+    String? name,
+    String? email,
+    String? password,
+    String? address,
+    String? type,
+    String? token,
+    List<dynamic>? cart,
+  }) {
+    return User(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      email: email ?? this.email,
+      password: password ?? this.password,
+      address: address ?? this.address,
+      type: type ?? this.type,
+      token: token ?? this.token,
+      cart: cart ?? this.cart,
+    );
+  }
 }
