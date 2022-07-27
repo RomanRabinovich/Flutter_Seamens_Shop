@@ -1,8 +1,7 @@
 import 'package:amazon_clone_tutorial/common/widgets/custom_button.dart';
 import 'package:amazon_clone_tutorial/constants/global_variables.dart';
+import 'package:amazon_clone_tutorial/features/address/screens/address_screen.dart';
 import 'package:amazon_clone_tutorial/features/cart/widgets/cart_product.dart';
-//import 'package:amazon_clone_tutorial/features/address/screens/address_screen.dart';
-//import 'package:amazon_clone_tutorial/features/cart/widgets/cart_product.dart';
 import 'package:amazon_clone_tutorial/features/cart/widgets/cart_subtotal.dart';
 import 'package:amazon_clone_tutorial/features/home/widgets/address_box.dart';
 import 'package:amazon_clone_tutorial/features/search/screens/search_screen.dart';
@@ -23,11 +22,11 @@ class _CartScreenState extends State<CartScreen> {
   }
 
   void navigateToAddress(int sum) {
-    // Navigator.pushNamed(
-    //   context,
-    //   AddressScreen.routeName,
-    //   arguments: sum.toString(),
-    // );
+    Navigator.pushNamed(
+      context,
+      AddressScreen.routeName,
+      arguments: sum.toString(),
+    );
   }
 
   @override
@@ -145,8 +144,6 @@ class _CartScreenState extends State<CartScreen> {
     );
   }
 }
-
-
 
 
 
